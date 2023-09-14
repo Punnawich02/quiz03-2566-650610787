@@ -14,7 +14,7 @@ export const GET = async (request) => {
   }
   
   
-  if(roomId === null || filtered === )
+  if(roomId === null || filtered === null)
     return NextResponse.json(
       {
         ok: false,
