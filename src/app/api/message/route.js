@@ -6,13 +6,31 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   readDB();
 
-  // return NextResponse.json(
-  //   {
-  //     ok: false,
-  //     message: `Room is not found`,
-  //   },
-  //   { status: 404 }
-  // );
+  const roomId = request.nextUrl.searchParams.get("roomId");
+  let filtered = DB.messages;
+
+  if(roomId !== null) {
+    filtered = filtered.filter((r) => r.roomId === roomId);
+  }
+  
+  
+  if(roomId === null || filtered === )
+    return NextResponse.json(
+      {
+        ok: false,
+        message: `Room is not found`,
+      },
+      { status: 404 }
+    );
+
+
+  return NextResponse.json(
+    {
+      ok: true,
+      message: filtered,
+    },
+    { status: 200 }
+  )
 };
 
 export const POST = async (request) => {
